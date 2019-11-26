@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+<body>
+  <% include ../partials/nav.ejs %>
+  <div class="container" align="center">
+        <div class="card jumbotron" style="width: 45rem;">
+        <h2>Place Inspection</h2>
+        <h4>Login page</h4>
+        <form action="/signin" method="post">
+            <input class="form-control" type="email" style="color:black"  name="Email" placeholder="Enter Email" required/>
+            <br>
+            <input class="form-control" type="password" style="color:black" name="Password" placeholder="Enter Password" required/>
+            <br>
+            <br>
+            <button class="btn btn-success btn-lg" type="submit">Login</button>
+            <br>
+            <br>
+            <a href="register" class="btn btn-danger btn-lg">Register Page</a>
+        </form>
+        </div>
+  </div>
+  
+<br>
+<br>
+<br>
+</body>
+</html>

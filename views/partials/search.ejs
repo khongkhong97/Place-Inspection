@@ -1,0 +1,10 @@
+<input type="text" class="form-control" name="term" id="search_term" placeholder="Search..." value="<% if(locals.term){%><%=term %><% } %>">
+<button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+<script>
+    function activePlaceSearch(){
+      var input = document.getElementById('search_term');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXdwJXsZ2ggDf8qdlRynzW3AuOrFyBBXw&libraries=places&callback=activePlaceSearch"></script>
+

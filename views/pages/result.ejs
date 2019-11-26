@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 30%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+    <% include ../partials/nav.ejs %>
+  <div class="text-center">
+      <form action="/saveDetails" method="post">
+        <input type="hidden" name="user_email" id="user_email" value='<%=id%>'>
+        <input type="hidden" name="location_name" id="location_name" value='<%=weather.name%>'>
+      <h1><span class="glyphicon glyphicon-flag"></span><%=weather.name%> - Maps</h1>
+      </div>
+       <input type="hidden" name="loc_lat" id="loc_lat" value='<%=weather.coord["lat"]%>'>
+       <input type="hidden" name="loc_long" id="loc_long" value='<%=weather.coord["lon"]%>'>
+      <% include ../partials/maps.ejs %>
+  <div class="container">
+    <div class="text-center">
+       <h4><span class="glyphicon glyphicon-flag"></span> Additional Details</h4>
+    </div>
+    <hr>
+    <div class="jumbotron row">
+      <div class="col-md-5">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> Attraction</h3>
+        <ol>
+          <%for(i=0;i<5;i++){%>
+            <li><%=attraction[i].name%></li>
+          <% } %>
+        </ol>
+        <input type="hidden" name="attraction1" id="attraction1" value='<%=attraction[0].name%>'>
+        <input type="hidden" name="attraction2" id="attraction2" value='<%=attraction[1].name%>'>
+        <input type="hidden" name="attraction3" id="attraction3" value='<%=attraction[2].name%>'>
+        <input type="hidden" name="attraction4" id="attraction4" value='<%=attraction[3].name%>'>
+        <input type="hidden" name="attraction5" id="attraction5" value='<%=attraction[4].name%>'>
+      </div>
+      <div class="col-md-4">
+          <h3><span class="glyphicon glyphicon-cutlery"></span> Restaurant</h3>
+            <ol>
+            <%for(i=0;i<5;i++){%>
+                <li><%=restaurant[i].name%></li>
+              <% } %>
+            </ol>
+            <input type="hidden" name="restaurant1" id="restaurant1" value='<%=restaurant[0].name%>'>
+            <input type="hidden" name="restaurant2" id="restaurant2" value='<%=restaurant[1].name%>'>
+            <input type="hidden" name="restaurant3" id="restaurant3" value='<%=restaurant[2].name%>'>
+            <input type="hidden" name="restaurant4" id="restaurant4" value='<%=restaurant[3].name%>'>
+            <input type="hidden" name="restaurant5" id="restaurant5" value='<%=restaurant[4].name%>'>
+      </div>
+      <div class="col-md-3">
+        <h3><span class="glyphicon glyphicon-cloud"></span> Weather Details</h3>
+        <ul>
+          <li>Weather : <%=weather.weather[0].main%></li>
+          <li>Humidity : <%=weather.main["humidity"]%> %</li>
+          <li>Pressure : <%=weather.main["pressure"]%> Pa</li>
+          <li>Temperature : <%=weather.main["temp"]%> °C</li>
+          <li>Wind : <%=weather.wind["speed"]%> km/h</li>
+        </ul>
+        <input type="hidden" name="weather" id="weather" value='<%=weather.weather[0].main%>'>
+        <input type="hidden" name="humidity" id="humidity" value='<%=weather.main["humidity"]%>'>
+        <input type="hidden" name="pressure" id="pressure" value='<%=weather.main["pressure"]%>'>
+        <input type="hidden" name="temperature" id="temperature" value='<%=weather.main["temp"]%>'>
+        <input type="hidden" name="wind" id="wind" value='<%=weather.wind["speed"]%>'>
+      </div>
+    </div> <!-- row -->
+  </div>
+</div>
+  <br>
+  <br>
+  <div class="wrapper text-center">
+  <button class="btn btn-success btn-lg" type="submit">Save</button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="alert alert-info text-center" role="alert">
+      <%=new Date();%>
+      <input type="hidden" name="dateCreated" id="dateCreated" value="<%=new Date();%>">
+  </div>
+</form>
+  </body>
+  </html>

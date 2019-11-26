@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/"><span class="glyphicon glyphicon-home"></span> Place Inspection</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <%if(id == null){%>
+          <li class="navbar-right">
+              <a href="login">Login</a>
+            </li>
+            <li class="navbar-right">
+                <a href="register">Register</a>
+              </li>
+          <% } else {%>
+            <li class="navbar-right">
+                <a href="logout">Log Out</a>
+            </li>
+            <li class="navbar-right">
+                <a><%=id%></a>
+            </li>
+            <li class="navbar-right">
+              <a href="viewRecentPlace">View Recent Place</a>
+          </li>
+        <% } %>
+    </ul>
+  </div>
+</nav>

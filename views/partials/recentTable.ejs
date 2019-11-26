@@ -1,0 +1,55 @@
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+<form action="/viewDetailPlaceHistory" method="POST">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Place</th>
+            <th>Latitude</th>
+            <th>Longtitude</th>
+            <th>Weather</th>
+            <th>Temperature</th>
+            <th>Date Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+                <%for(i=0;i<tempplace.length;i++){%>
+                <tr> 
+                  <td><%= i+1 %></td>
+                  <td><%=tempplace[i].place%></td>
+                  <td><%=tempplace[i].lat%></td>
+                  <td><%=tempplace[i].long%></td>
+                  <td><%=tempplace[i].weather%></td>
+                  <td><%=tempplace[i].temperature%></td>
+                  <td><%=tempplace[i].dateCreated%></td>
+                  <td><button type="submit" onclick="changeValue('<%= i %>')" class="btn btn-info" value="<%= i %>"</button>View</button></td>
+                </tr>
+                <% } %>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+                <th>ID</th>
+                <th>Place</th>
+                <th>Latitude</th>
+                <th>Longtitude</th>
+                <th>Weather</th>
+                <th>Temperature</th>
+                <th>Date Created</th>
+                <th></th>
+        </tr>
+    </tfoot>
+</table>
+<script>
+        function changeValue(x){
+            document.getElementById("uid").value = x;
+        }
+        </script>        
+<input type="hidden" name="uid" id="uid" value=0>
+</form>

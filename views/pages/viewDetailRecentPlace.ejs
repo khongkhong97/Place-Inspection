@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 30%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+    <% include ../partials/nav.ejs %>
+  <div class="text-center">
+      <h1><span class="glyphicon glyphicon-flag"></span><%=tempplace[arrayindex].place%> - Maps</h1>
+      </div>
+      <input type="hidden" name="loc_lat" id="loc_lat" value=<%=tempplace[arrayindex].lat%>>
+        <input type="hidden" name="loc_long" id="loc_long" value=<%=tempplace[arrayindex].long%>>
+      <% include ../partials/maps.ejs %>
+  <div class="container">
+    <div class="text-center">
+       <h4><span class="glyphicon glyphicon-flag"></span>Additional Details</h4>
+    </div>
+    <hr>
+    <div class="jumbotron row">
+      <div class="col-md-5">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> Attraction</h3>
+        <ol>
+            <li><%=tempplace[arrayindex].attraction1%></li>
+            <li><%=tempplace[arrayindex].attraction2%></li>
+            <li><%=tempplace[arrayindex].attraction3%></li>
+            <li><%=tempplace[arrayindex].attraction4%></li>
+            <li><%=tempplace[arrayindex].attraction5%></li>
+        </ol>
+      </div>
+      <div class="col-md-4">
+          <h3><span class="glyphicon glyphicon-cutlery"></span> Restaurant</h3>
+            <ol>
+                <li><%=tempplace[arrayindex].restaurant1%></li>
+                <li><%=tempplace[arrayindex].restaurant2%></li>
+                <li><%=tempplace[arrayindex].restaurant3%></li>
+                <li><%=tempplace[arrayindex].restaurant4%></li>
+                <li><%=tempplace[arrayindex].restaurant5%></li>
+            </ol>
+      </div>
+      <div class="col-md-3">
+        <h3><span class="glyphicon glyphicon-cloud"></span> Weather Details</h3>
+        <ul>
+          <li>Weather : <%=tempplace[arrayindex].weather%></li>
+          <li>Humidity : <%=tempplace[arrayindex].humidity%> %</li>
+          <li>Pressure : <%=tempplace[arrayindex].pressure%> Pa</li>
+          <li>Temperature : <%=tempplace[arrayindex].temperature%> °C</li>
+          <li>Wind : <%=tempplace[arrayindex].wind%> km/h</li>
+        </ul>
+      </div>
+    </div> <!-- row -->
+  </div>
+</div>
+  <div class="wrapper text-center">
+  </div>
+  <br>
+  <div class="wrapper text-center">
+      <form action="/deleteDetails" method="post">
+        <input type="hidden" name="user_email" id="user_email" value=<%=id%>>
+        <input type="hidden" name="location_name" id="location_name" value="<%=tempplace[arrayindex].place%>">
+        <input type="hidden" name="loc_lat" id="loc_lat" value=<%=tempplace[arrayindex].lat%>>
+        <input type="hidden" name="loc_long" id="loc_long" value=<%=tempplace[arrayindex].long%>>
+        <input type="hidden" name="attraction1" id="attraction1" value=<%=tempplace[arrayindex].attraction1%>>
+        <input type="hidden" name="attraction2" id="attraction2" value=<%=tempplace[arrayindex].attraction2%>>
+        <input type="hidden" name="attraction3" id="attraction3" value=<%=tempplace[arrayindex].attraction3%>>
+        <input type="hidden" name="attraction4" id="attraction4" value=<%=tempplace[arrayindex].attraction4%>>
+        <input type="hidden" name="attraction5" id="attraction5" value=<%=tempplace[arrayindex].attraction5%>>
+        <input type="hidden" name="restaurant1" id="restaurant1" value=<%=tempplace[arrayindex].restaurant1%>>
+        <input type="hidden" name="restaurant2" id="restaurant2" value=<%=tempplace[arrayindex].restaurant2%>>
+        <input type="hidden" name="restaurant3" id="restaurant3" value=<%=tempplace[arrayindex].restaurant3%>>
+        <input type="hidden" name="restaurant4" id="restaurant4" value=<%=tempplace[arrayindex].restaurant4%>>
+        <input type="hidden" name="restaurant5" id="restaurant5" value=<%=tempplace[arrayindex].restaurant5%>>
+        <input type="hidden" name="weather" id="weather" value=<%=tempplace[arrayindex].weather%>>
+        <input type="hidden" name="humidity" id="humidity" value=<%=tempplace[arrayindex].humidity%>>
+        <input type="hidden" name="pressure" id="pressure" value=<%=tempplace[arrayindex].pressure%>>
+        <input type="hidden" name="temperature" id="temperature" value=<%=tempplace[arrayindex].temperature%>>
+        <input type="hidden" name="wind" id="wind" value=<%=tempplace[arrayindex].wind%>>
+        <input type="hidden" name="dateCreated" id="dateCreated" value=<%=tempplace[arrayindex].dateCreated%>>
+        <button class="btn btn-danger btn-lg" type="submit">Delete</button>
+        </form>
+  </div>
+  <br>
+  <div class="alert alert-info text-center" role="alert">
+      <%=new Date();%>
+  </div>
+  <br>
+  <br>
+  </body>
+  </html>
